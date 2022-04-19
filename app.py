@@ -35,7 +35,7 @@ def parser():
         'submit_time': timestamp
     }
     res = r.get(deviceid)
-    if res != None:
+    if res == None:
         r.set(deviceid, data)
         return json.dumps({"code": 200, "msg": 'OK'})
     else:
