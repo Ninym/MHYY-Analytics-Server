@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, redirect
 import requests as r
 import redis
 import os
@@ -13,9 +13,7 @@ r = redis.Redis(host=host, password=password, port=port, ssl=True)
 
 app = Flask(__name__)
 
-app.route('/mhyy', methods=['GET'])
-
-
+@app.route('/mhyy', methods=['GET'])
 def parser():
     client_type = request.args.get('type')
     version = request.args.get('version')
@@ -43,6 +41,9 @@ def parser():
     else:
         return json.dumps({"code": 200, "msg": "Duplicated"})
 
+@app.route('/', methods=['GET'])
+def home():
+    return redirect('https://ninym.top', code=301)  
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=8888)
