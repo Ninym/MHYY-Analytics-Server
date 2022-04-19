@@ -36,7 +36,7 @@ def parser():
     }
     res = r.get(deviceid)
     if res == None:
-        r.set(deviceid, data)
+        r.set(deviceid, str(data))
         return json.dumps({"code": 200, "msg": 'OK'})
     else:
         return json.dumps({"code": 200, "msg": "Duplicated"})
