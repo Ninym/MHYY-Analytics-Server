@@ -22,16 +22,18 @@ def parser():
     devicename = request.args.get('devicename')
     devicemodel = request.args.get('devicemodel')
     appid = request.args.get('appid')
+    bbsid = request.args.get('bbsid')
     curr_time = datetime.datetime.now()
     timestamp = datetime.datetime.strftime(curr_time, '%Y-%m-%d %H:%M:%S')
     data = {
-        'client_type': client_type,
-        'version': version,
-        'android': android,
         'deviceid': deviceid,
         'devicename': devicename,
         'devicemodel': devicemodel,
+        'android': android,
+        'client_type': client_type,
+        'version': version,
         'appid': appid,
+        'bbsid': bbsid,
         'submit_time': timestamp
     }
     res = r.get(deviceid)
