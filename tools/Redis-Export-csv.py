@@ -2,7 +2,10 @@ import redis
 import sys
 import json
 
-redisURL = sys.argv[1]
+try:
+    redisURL = sys.argv[1]
+except IndexError:
+    redisURL = input('Please input your Redis Database URL: ')
 
 password, host, port = redisURL.replace(
     'redis://', '').replace('@', '|').replace(':', '|').split('|')
